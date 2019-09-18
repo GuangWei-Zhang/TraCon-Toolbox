@@ -1,0 +1,281 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 25 19:46:55 2018
+
+@author: zhanglab
+"""
+
+'''Mice_tracking.py 
+Written by Guang-Wei Zhang
+by Oct. 16.2018
+'''
+'''
+#installation guide
+# for windows system: download and install anaconda3 
+# in anaconda prompt: type in "pip install opencv-python"
+# in anaconda prompt: type in "conda install -c anaconda tk"
+
+# for mac OS, download and install anaconda3
+# in terminal check default python version using: "which python", and make the anaconda as the default
+# in terminal type in "pip install opencv-python"
+# the tkinter comes with mac OS, no need to install again
+
+# Usage instruction: 
+
+Open Spyder
+Drag and drop Mice_Tracking file into workspace
+Hit green play button
+Select downsampled video file (recommend 480p x 480p for faster speed)
+Once finished, video with tracking trace and excel sheet appear in source folder for video
+For excel file: three columns, first is x, second is y coord, third is pixel distance traveled between frames
+For the third column, value is always incorrect, so change to zero.
+Plot x and y columns for trace of motion graph (line graph)
+Plot motion column for speed trace. Convert y-axis to inches per frame by measure how many pixels per inch in video (and convert speed to secs using 30 fps conversion).
+
+Delete orginal excel file for a given video if you want to re-run the program analysis for the same video (it will just add data to the original excel file making it really long).
+'''
+
+
+import cv2
+import numpy as np
+#import matplotlib.pyplot as plt
+import os
+from math import hypot
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
+sdThresh = 10
+font = cv2.FONT_HERSHEY_SIMPLEX
+
+#TODO: Face Detection 1
+def distMap(frame1, frame2):
+    """outputs pythagorean distance between two frames"""
+    frame1_32 = np.float32(frame1)
+    frame2_32 = np.float32(frame2)
+    diff32 = frame1_32 - frame2_32
+    norm32 = np.sqrt(diff32[:,:,0]**2 + diff32[:,:,1]**2 + diff32[:,:,2]**2)/np.sqrt(255**2 + 255**2 + 255**2)
+    dist = np.uint8(norm32*255)
+    return dist
+
+cv2.namedWindow('frame')
+cv2.namedWindow('dist')
+
+#capture video stream from camera source. 0 refers to first camera, 1 referes to 2nd and so on.
+cap = cv2.VideoCapture(0)
+
+_, frame1 = cap.read()
+_, frame2 = cap.read()
+                     
+
+while (True):
+    _, frame3 = cap.read()
+    rows, cols, _ = np.shape(frame3)
+    dist = distMap(frame1, frame3)
+    frame1 = frame2
+    frame2 = frame3
+    mod = cv2.GaussianBlur(dist, (9,9), 0)
+    _, thresh = cv2.threshold(mod, 100, 255, 0)
+    _, stDev = cv2.meanStdDev(mod)
+    cv2.imshow('dist', mod)
+    cv2.putText(frame2, "Standard Deviation - {}".format(round(stDev[0][0],0)), (70, 70), font, 1, (255, 0, 255), 1, cv2.LINE_AA)
+    if stDev > sdThresh:
+        print("Motion detected.. Do something!!!");   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+print(filename)
+(root, ext) =os.path.splitext(filename) 
+
+duration = 1  # second
+freq = 440  # Hz
+
+#mouse_cascade = cv2.CascadeClassifier('mouse_body_cascade.xml')
+cap = cv2.VideoCapture(filename)
+
+Moving_track = [(0,0)]
+## add text
+font = cv2.FONT_HERSHEY_SIMPLEX
+
+# export video setting
+width = int(cap.get(3))
+height = int(cap.get(4))
+
+
+fourcc = cv2.VideoWriter_fourcc('m','p','4','v')
+out = cv2.VideoWriter(root+'_out.mp4',fourcc,30,(width,height))
+
+
+
+
+
+Peak_speed = 0
+
+
+while not cap.isOpened():
+    cap = cv2.VideoCapture(filename)
+    cv2.waitKey(1000)
+    #os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (duration, freq))
+    print("Can't load the file")
+    break
+# pos_frame = cap.get(cv2.cv.CV_CAP_PROP_POS_FRAMES)
+
+a=[(0,0)]
+i=0
+record = False
+
+
+while True:
+    i+=1
+    ret, img_raw =cap.read() #start capture images from webcam
+    if ret == False:
+        break
+  ####
+    
+  ####
+        
+    #if i==1:
+   #     img_ROI = img_raw.copy()
+    #    cv2.imshow(r'ROI',img_ROI)
+        
+        
+    if i==1:
+        r = cv2.selectROI(img_raw)
+    
+    img_gray = cv2.cvtColor(img_raw,cv2.COLOR_BGR2GRAY)
+    y_start = int(r[0])
+    y_stop = int(r[0]+r[2])
+    
+    x_start = int(r[1])
+    x_stop = int(r[1]+r[3])
+     
+    
+    img_gray = img_gray[x_start:x_stop,y_start:y_stop]
+
+    color_img = cv2.cvtColor(img_gray, cv2.COLOR_GRAY2RGB)
+
+    #cv2.imshow(r'color_img',color_img)
+
+    
+
+    img=color_img.copy()
+
+  # select region of interest
+    #img_gray = img_gray[75:400,75:600]
+
+
+    blur = cv2.GaussianBlur(img_gray,(5,5),0)
+    
+    cv2.imshow('whisker',blur)
+    
+    retval,img_bi = cv2.threshold(blur,50,255,cv2.THRESH_BINARY_INV)
+    
+    cv2.imshow('binary',img_bi)
+    
+    #binary,contours,hierarchy = cv2.findContours(img_bi.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    print("this is frame#:", i)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+    #for c in contours:
+
+        #
+        
+        
+   # cv2.drawContours(img_raw,contours+[int(y_start),int(x_start)],-1,(0,255,0),-1)
+
+  #print(np.mean(contours))
+
+  # only proceed if at least one contour was found
+'''
+    if len(contours) > 0:
+		# find the largest contour in the mask, then use
+		# it to compute the minimum enclosing circle and
+		# centroid
+        c = max(contours, key=cv2.contourArea)
+        ((x, y), radius) = cv2.minEnclosingCircle(c)
+        try:
+            M = cv2.moments(c)
+            center = ((M["m10"] / M["m00"])+(y_start), (M["m01"] / M["m00"])+(x_start))
+
+            if radius >10:
+                #cv2.circle(img_raw, (int(x), int(y)), int(radius), (0, 255, 255), 2)
+                #cv2.circle(img_raw, center, 5, (0, 0, 255), -1)
+
+                #print('Moving_track:',Moving_track[-1][0],'Center:',center[0])
+                d_dist = hypot(Moving_track[-1][0]-center[0],Moving_track[-1][1]-center[1])
+                Speed = (d_dist/0.04)*0.075
+                #print('Delta_dist:', d_dist)
+                #d_dist =round(d_dist,2)
+                temp = "{:0>.2f}".format(Speed)
+                
+                
+                #cv2.putText(img_raw,'Speed: '+temp,(50,50),font,1,(255,255,255),2,cv2.LINE_AA)
+                #cv2.putText(img_raw,'cm/s',(280,50),font,1,(255,255,255),2,cv2.LINE_AA)
+
+                #Peak_speed = max(Peak_speed,Speed)
+                #temp2 = "{:0>.2f}".format(Peak_speed)
+                #cv2.putText(img_raw,'Peak speed: '+temp2,(50,80),font,1,(255,255,255),2,cv2.LINE_AA)
+                #cv2.putText(img_raw,'cm/s',(380,80),font,1,(255,255,255),2,cv2.LINE_AA)
+
+                #cv2.rectangle(img,(center[0]-45,center[1]-45),(center[0]+45,center[1]+45),[255,255,255],2)
+                #cv2.imshow('img_raw',img_raw)
+                #img[1:91,-91:-1] = img_raw[center[1]-45:center[1]+45,center[0]-45:center[0]+45]
+
+                Moving_track.append(center)
+
+
+                points = np.array(Moving_track)
+                cv2.polylines(img_raw,np.int32([points[1:]]),0,(0,0,255))
+                cv2.imshow(r'img',img_raw)
+                out.write(img_raw)
+                line = str(center[0])+','+str(center[1])+','+str(Speed)+'\n'
+                with open(root+r'_trackTrace.csv','a') as f:
+                    f.write(line)
+
+
+        except ZeroDivisionError:
+            print("error")
+'''
+    
+
+
+    #cv2.imshow("img",img)
+
+
+
+   
+      # i+=1
+
+      # only proceed if the radius meets a minimum size
+    #if radius > 10:
+      # draw the circle and centroid on the frame,
+      # then update the list of tracked points
+   #      cv2.circle(img, (int(x), int(y)), int(radius),
+    #     (0, 255, 255), 2)
+    #     cv2.circle(img, center, 5, (0, 0, 255), -1)
+
+
+     #cv2.imshow("img",img)
+
+
+
+print("Processing Done!")
+cap.release()
+cv2.destroyAllWindows()
+out.release()
