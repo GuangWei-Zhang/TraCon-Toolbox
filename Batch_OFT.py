@@ -166,7 +166,7 @@ for fullFileName in root1.tk.splitlist(filez):
     
         retval,img_bi = cv2.threshold(blur,50,255,cv2.THRESH_BINARY_INV)
     
-        binary,contours,hierarchy = cv2.findContours(img_bi.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+        contours,hierarchy = cv2.findContours(img_bi.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
     #for c in contours:
 
