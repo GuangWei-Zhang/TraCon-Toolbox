@@ -1,8 +1,8 @@
 # Track-and-Control(TraCon)-Toolbox
-##Real-time animal detection
+## Real-time animal detection
 ![](Gif_folder/demo_1.gif)
 
-##Closed-loop feedback control
+## Closed-loop feedback control
 
 Based on various forms of behavior paradigm, optogenetic manipulation of neuronal activity has boosted our understanding of the functional architecture of the brain circuits. In the meantime, the rapid development in computer vision tremendously accelerate the automation of behavior analysis. However, a deeper understanding of the neuronal circuits often requires real-time and event-triggered interference, to generate a tighter correlation between neuronal activity and behavior performance, which is time-consuming and cast challenge towards experimenters that cause variation. Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the system can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible accross OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
 
