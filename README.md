@@ -12,8 +12,18 @@ Upon successful detection, we can define a spatial region that would trigger the
 
 Moreover, the spatial region can be either static, as used in two-chamber place preference test, or dynamic, which changes accordingly to the position of another animal.    
 
+## Design of TraCon
 
-Based on various forms of behavior paradigm, optogenetic manipulation of neuronal activity has boosted our understanding of the functional architecture of the brain circuits. In the meantime, the rapid development in computer vision tremendously accelerate the automation of behavior analysis. However, a deeper understanding of the neuronal circuits often requires real-time and event-triggered interference, to generate a tighter correlation between neuronal activity and behavior performance, which is time-consuming and cast challenge towards experimenters that cause variation. Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the system can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible accross OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
+TraCon toolbox is video-based and written in Python programming language (compatible with Python 2 and Python 3) that can work on Windows, Max OS and Linux system. Due to the low computation requirements, TraCon can run at a single core CPU only computer for real time object detection and feedback control. Considering most neuroscience labs have laser/LED components or customized sensory stimulation, TraCon toolbox can be easily integrated with existing laboratory rig to achieve automation. 
+
+
+## Step-by-step Video Tutorial
+This part is still under development. You may subscript to the mailing list to receive notification regarding the update:
+https://docs.google.com/spreadsheets/d/1bvRgqYsHoxdKriIWadSp18Iz_6pi-RCWazMIVA_AIbg/edit?usp=sharing
+
+Or you may check the Youtube channel in the future:
+https://www.youtube.com/channel/UCMS8gQo8F_oKKvzGmNWnZBw?view_as=subscriber
+
 
 ## Getting Started
 
