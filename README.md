@@ -1,12 +1,16 @@
 # Track-and-Control(TraCon)-Toolbox
 ## Real-time animal detection
 ![](Gif_folder/demo_1.gif)
+TraCon can achieve real-time animal detection and output statistic results for standard behavior tests, for example, open field test, elevated plus maze test, Morris water maze, social preference test, et. al.
 
 ## Closed-loop feedback control
 ![](Gif_folder/Demo_closedLoop.gif)
+Upon successful detection, we can define a spatial region that would trigger the optogenetic or a sensory stimulation. Here we used two-chamber real-time place preference for demonstration.
 
 ## Dynamic region for closed-loop control
 ![](Gif_folder/demo_social.gif)
+Moreover, the spatial region can be either static, as used in two-chamber place preference test, or dynamic, which changes accordingly to the position of another animal.    
+
 
 Based on various forms of behavior paradigm, optogenetic manipulation of neuronal activity has boosted our understanding of the functional architecture of the brain circuits. In the meantime, the rapid development in computer vision tremendously accelerate the automation of behavior analysis. However, a deeper understanding of the neuronal circuits often requires real-time and event-triggered interference, to generate a tighter correlation between neuronal activity and behavior performance, which is time-consuming and cast challenge towards experimenters that cause variation. Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the system can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible accross OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
 
