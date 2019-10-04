@@ -44,7 +44,7 @@ Installation instruction for windows users:
 This installation has been tested in Windows 10 and 7 system
 
 #### Install Python environment:
-1.	Download anaconda from www.anaconda.com/distribution/
+1.	Download [anaconda](www.anaconda.com/distribution/)
 2.	Chose the Python 3.7 version, 64-Bit Graphic Installer (486MB)
 3.	After completion of the download, open the Anaconda3-2019.07-Windows-x86_64.exe installer file
 4.	Follow the intuitive installation instruction and chose ‘Add Anaconda to the system PATH environment variable’ during the installation’ and ‘Register Anaconda as the system Python 3.7’
@@ -63,7 +63,7 @@ pip install pyserial
 ```
 #### Execution of the code
 1.	Open Anaconda and run Spyder
-2.	Open the python files downloaded from http://github.com/GuangWei-Zhang/TraCon-Toolbox
+2.	Open the python files downloaded from [here](http://github.com/GuangWei-Zhang/TraCon-Toolbox/Python_scripts)
 3.	Use the default setting of the system.
 
 
