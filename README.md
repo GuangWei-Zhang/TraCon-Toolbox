@@ -110,9 +110,10 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python](https://www.python.org) - programming language
+* [OpenCV](https://opencv.org) - Image processing library
+* [Pyserial](https://pypi.org/project/pyserial/) - Serial Port Control
+* [Arduino](https://www.arduino.cc) - open-source and easy-to-use micro controller board 
 
 ## Contributing
 
