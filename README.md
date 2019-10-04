@@ -3,7 +3,7 @@
 ![](Gif_folder/demo_1.gif)
 
 ## Closed-loop feedback control
-![](Gif_folder/demo_closedLoop.gif)
+![](Gif_folder/Demo_closedLoop.gif)
 
 ## Dynamic region for closed-loop control
 ![](Gif_folder/demo_social.gif)
