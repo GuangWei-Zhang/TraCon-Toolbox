@@ -1,5 +1,6 @@
 # Track-and-Control(TraCon)-Toolbox
 ## Real-time animal detection
+![](Images/Architecture.jpg)
 ![](Gif_folder/demo_1.gif)
 TraCon can achieve real-time animal detection and output statistic results for standard behavior tests, for example, open field test, elevated plus maze test, Morris water maze, social preference test, et. al.
 
