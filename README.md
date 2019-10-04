@@ -11,6 +11,9 @@ TraCon can achieve real-time animal detection and output statistic results for s
 Upon successful detection, we can define a spatial region that would trigger the optogenetic or a sensory stimulation. Here we used two-chamber real-time place preference for demonstration.
 
 ## Dynamic region for closed-loop control
+<p align="center">
+  <img src="Gif_folder/demo_social.gif">
+</p>
 ![](Gif_folder/demo_social.gif)
 ![](Images/Dynamic_stimulation.jpg)
 Moreover, the spatial region can be either static, as used in two-chamber place preference test, or dynamic, which changes accordingly to the position of another animal.    
