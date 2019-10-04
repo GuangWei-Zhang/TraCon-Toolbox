@@ -12,7 +12,7 @@ Upon successful detection, we can define a spatial region that would trigger the
 
 Moreover, the spatial region can be either static, as used in two-chamber place preference test, or dynamic, which changes accordingly to the position of another animal.    
 
-## Design of TraCon
+## Introduction of TraCon
 
 TraCon toolbox is video-based and written in Python programming language (compatible with Python 2 and Python 3) that can work on Windows, Max OS and Linux system. Due to the low computation requirements, TraCon can run at a single core CPU only computer for real time object detection and feedback control. Considering most neuroscience labs have laser/LED components or customized sensory stimulation, TraCon toolbox can be easily integrated with existing laboratory rig to achieve automation. 
 
@@ -27,19 +27,47 @@ https://www.youtube.com/channel/UCMS8gQo8F_oKKvzGmNWnZBw?view_as=subscriber
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the toolbox can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible across OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
 
 ### Prerequisites
 
 1.Python environment and OpenCV library for the object detection analysis.
-2.Arduino for TTL pulse train generation.
+2.Arduino board for TTL pulse train generation.
 
 This instruction would go through every detail you might need to know while install the TraCon toolbox.
 
 
-### Intall Python
+### Intallation
 
-#### Windows Users
+### Windows Users
+Installation instruction for windows users:
+This installation has been tested in Windows 10 and 7 system
+
+#### Install Python environment:
+1.	Download anaconda from www.anaconda.com/distribution/
+2.	Chose the Python 3.7 version, 64-Bit Graphic Installer (486MB)
+3.	After completion of the download, open the Anaconda3-2019.07-Windows-x86_64.exe installer file
+4.	Follow the intuitive installation instruction and chose ‘Add Anaconda to the system PATH environment variable’ during the installation’ and ‘Register Anaconda as the system Python 3.7’
+
+#### Install OpenCV
+1.	Open Anaconda Prompt (Anaconda3)
+2.	In the command line:
+```
+pip install opencv-contrib-python
+```
+#### Install USB serial control Package
+1.	Open Anaconda Prompt (Anaconda3)
+2.	Type in:
+```
+pip install pyserial 
+```
+#### Execution of the code
+1.	Open Anaconda and run Spyder
+2.	Open the python files downloaded from http://github.com/GuangWei-Zhang/TraCon-Toolbox
+3.	Use the default setting of the system.
+
+
+
 A step by step series of examples that tell you how to dive into the TraCon toolbox
 
 Say what the step will be
