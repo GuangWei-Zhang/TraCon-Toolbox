@@ -1,71 +1,91 @@
 # Track-and-Control(TraCon)-Toolbox
 ## Real-time animal detection
+#### The architecutre of the TraCon System
+![](Images/Architecture.jpg)
 ![](Gif_folder/demo_1.gif)
+TraCon can achieve real-time animal detection and output statistic results for standard behavior tests, for example, open field test, elevated plus maze test, Morris water maze, social preference test, et. al.
 
 ## Closed-loop feedback control
+![](Gif_folder/Demo_closedLoop.gif)
+![](Images/DAT_RTPP.jpg)
+Upon successful detection, we can define a spatial region that would trigger the optogenetic or a sensory stimulation. Here we used two-chamber real-time place preference for demonstration.
 
-Based on various forms of behavior paradigm, optogenetic manipulation of neuronal activity has boosted our understanding of the functional architecture of the brain circuits. In the meantime, the rapid development in computer vision tremendously accelerate the automation of behavior analysis. However, a deeper understanding of the neuronal circuits often requires real-time and event-triggered interference, to generate a tighter correlation between neuronal activity and behavior performance, which is time-consuming and cast challenge towards experimenters that cause variation. Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the system can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible accross OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
+## Dynamic region for closed-loop control
+<p align="center">
+  <img width = "600" height = "200" src="Gif_folder/demo_social.gif">
+</p>
+
+![](Images/Dynamic_stimulation.jpg)
+Moreover, the spatial region can be either static, as used in two-chamber place preference test, or dynamic, which changes accordingly to the position of another animal.    
+
+## Introduction of TraCon
+
+TraCon toolbox is video-based and written in Python programming language (compatible with Python 2 and Python 3) that can work on Windows, Max OS and Linux system. Due to the low computation requirements, TraCon can run at a single core CPU only computer for real time object detection and feedback control. Considering most neuroscience labs have laser/LED components or customized sensory stimulation, TraCon toolbox can be easily integrated with existing laboratory rig to achieve automation. 
+
+
+## Step-by-step Video Tutorial
+This part is still under development. You may subscript to the mailing list to receive notification regarding the update:
+https://docs.google.com/spreadsheets/d/1bvRgqYsHoxdKriIWadSp18Iz_6pi-RCWazMIVA_AIbg/edit?usp=sharing
+
+Or you may check the Youtube channel in the future:
+https://www.youtube.com/channel/UCMS8gQo8F_oKKvzGmNWnZBw?view_as=subscriber
+
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Here we describe our Track-and-Control (TraCon) toolbox, a fully automatic system with real-time object detection and low latency closed-loop hardware feedback. We further demonstrate that the toolbox can be applied in a broad spectrum of behavior tests in the neuroscience field, including open field, cross maze, Morris water maze, real-time place preference, social interaction, and looming-induced defensive behavior tests. TraCon toolbox proved to be an efficient and easy-to-use method, and highly flexible for extension. Moreover, the toolbox is open source and compatible across OS platforms and each lab can easily integrate TraCon with their existing set up to achieve automation. And we hope TraCon toolbox would further accelerate our understanding of the functional architecture of the brain. 
 
 ### Prerequisites
 
 1.Python environment and OpenCV library for the object detection analysis.
-2.Arduino for TTL pulse train generation.
+2.Arduino board for TTL pulse train generation.
 
 This instruction would go through every detail you might need to know while install the TraCon toolbox.
 
 
-### Intall Python
+### Intallation
 
-#### Windows Users
-A step by step series of examples that tell you how to dive into the TraCon toolbox
+### Windows Users
+Installation instruction for windows users:
+This installation has been tested in Windows 10 and 7 system
 
-Say what the step will be
+#### Install Python environment:
+1.	Download [anaconda](www.anaconda.com/distribution/)
+2.	Chose the Python 3.7 version, 64-Bit Graphic Installer (486MB)
+3.	After completion of the download, open the Anaconda3-2019.07-Windows-x86_64.exe installer file
+4.	Follow the intuitive installation instruction and chose ‘Add Anaconda to the system PATH environment variable’ during the installation’ and ‘Register Anaconda as the system Python 3.7’
 
+#### Install OpenCV
+1.	Open Anaconda Prompt (Anaconda3)
+2.	In the command line:
 ```
-Give the example
+pip install opencv-contrib-python
 ```
-
-And repeat
-
+#### Install USB serial control Package
+1.	Open Anaconda Prompt (Anaconda3)
+2.	Type in:
 ```
-until finished
+pip install pyserial 
 ```
+#### Execution of the code
+1.	Open Anaconda and run Spyder
+2.	Open the python files downloaded from [here](http://github.com/GuangWei-Zhang/TraCon-Toolbox/Python_scripts)
+3.	Use the default setting of the system.
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python](https://www.python.org) - programming language
+* [OpenCV](https://opencv.org) - Image processing library
+* [Pyserial](https://pypi.org/project/pyserial/) - Serial Port Control
+* [Arduino](https://www.arduino.cc) - open-source and easy-to-use micro controller board 
 
 ## Contributing
 
@@ -77,9 +97,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Guang-Wei Zhang** - *Initial work* - [TraCon-Toolbox](https://github.com/guangWei-Zhang/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/guangWei-Zhang/TraCon-Toolbox/contributors) who participated in this project.
 
 ## License
 
