@@ -8,7 +8,7 @@ TraCon can achieve real-time animal detection and output statistic results for s
 ## Closed-loop feedback control
 ![](Gif_folder/Demo_closedLoop.gif)
 ![](Images/DAT_RTPP.jpg)
-Upon successful detection, we can define a spatial region that would trigger the optogenetic or a sensory stimulation. Here we used two-chamber real-time place preference for demonstration.
+Upon successful detection, we can define a spatial region that would trigger the optogenetic or a sensory stimulation. Here we used two-chamber real-time place preference for demonstration. In our previous study, we used this method  [Zhang, et al. 2018 Neuron](https://www.researchgate.net/publication/327064654_Transforming_Sensory_Cues_into_Aversive_Emotion_via_Septal-Habenular_Pathway)
 
 ## Dynamic region for closed-loop control
 <p align="center">
