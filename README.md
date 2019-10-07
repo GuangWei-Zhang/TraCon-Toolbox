@@ -2,6 +2,9 @@
 ## Real-time animal detection
 #### The architecutre of the TraCon System
 ![](Images/Architecture.jpg)
+
+(A)	Images are streamed from the webcam to computer, running through the object detection module, which send feedback control signals to the optogenetic devices through Arduino Microcontroller board. 
+
 ![](Gif_folder/demo_1.gif)
 TraCon can achieve real-time animal detection and output statistic results for standard behavior tests, for example, open field test, elevated plus maze test, Morris water maze, social preference test, et. al.
 
