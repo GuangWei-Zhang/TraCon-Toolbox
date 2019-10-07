@@ -47,7 +47,7 @@ This instruction would go through every detail you might need to know while inst
 
 ### Windows Users
 Installation instruction for windows users:
-This installation has been tested in Windows 10 and 7 system
+This installation has been tested on Windows 10 and 7 system
 
 #### Install Python environment:
 1.	Download [anaconda](www.anaconda.com/distribution/)
