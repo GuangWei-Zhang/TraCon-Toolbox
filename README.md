@@ -81,7 +81,8 @@ pip install pyserial
 
 ## Deployment
 
-
+## Instruction for the arduino connection
+![](Images/Arduino.jpg)
 
 ## Built With
 
